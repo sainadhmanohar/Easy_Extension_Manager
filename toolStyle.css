@@ -1,0 +1,271 @@
+body {
+  width: 500px;
+}
+body #extDataContainer {
+  padding: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+}
+body #extDataContainer #head #homeIcon {
+  float: left;
+  position: relative;
+  top: 5px;
+  left: 14px;
+  width: 24px;
+}
+body #extDataContainer #head img {
+  cursor: pointer;
+  float: right;
+  width: 19px;
+}
+body #extDataContainer #head #extSearch {
+  border: 1px solid rgba(223, 225, 229, 0);
+  border-radius: 22px;
+  padding: 7px;
+  background-color: #e4e4e4;
+  display: inline-block;
+  width: 78%;
+  position: relative;
+  left: 28px;
+}
+body #extDataContainer #head #extSearch:hover {
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+}
+body #extDataContainer #head #extSearch div {
+  width: 90%;
+  display: inline-block;
+}
+body #extDataContainer #head #extSearch div input {
+  border: none;
+  margin-left: 7px;
+  font-size: 15px;
+  width: 100%;
+  background: transparent;
+}
+body #extDataContainer #head #extSearch div input:focus {
+  outline: none;
+}
+body #extDataContainer #head #extSearch div input::-webkit-input-placeholder {
+  color: #3f3c3c;
+}
+body #extDataContainer #head #extSearch div input::-moz-placeholder {
+  color: #3f3c3c;
+}
+body #extDataContainer #head #extSearch div input::-ms-placeholder {
+  color: #3f3c3c;
+}
+body #extDataContainer #head #extSearch div input::placeholder {
+  color: #3f3c3c;
+}
+body #extDataContainer #head #extSearch #searchIcon {
+  margin-right: 5px;
+}
+body #extDataContainer #head #extSearch #searchIcon:hover {
+  content: url("icons/search_icon_active.png");
+}
+body #extDataContainer #head #filterIcon {
+  position: relative;
+  top: 9px;
+  right: 9px;
+}
+body #extDataContainer #head #filterIcon:hover {
+  height: 19px;
+}
+body #extDataContainer #filterPopup {
+  position: absolute;
+  width: 31%;
+  z-index: 1;
+  right: 13px;
+  margin-left: 3px;
+  display: none;
+  box-shadow: rgba(32, 33, 36, 0.28) -2px 1px 5px 1px;
+  background-color: #f1f1f1;
+}
+body #extDataContainer #filterPopup div #filterPopupContent label p {
+  padding: 2px 14px;
+}
+body #extDataContainer #filterPopup div #filterPopupContent label p input {
+  position: relative;
+  top: 2px;
+  left: 63px;
+}
+body #extDataContainer #filterPopup div #filterPopupContent label p:hover {
+  background-color: #e2dede;
+}
+body #extDataContainer #filterPopup div #filterPopupContent div {
+  text-align: center;
+  padding-bottom: 7px;
+}
+body #extDataContainer #filterPopup div #filterPopupContent div #closeFilter {
+  cursor: pointer;
+  border: 1px solid #bb9c9c;
+  padding: 3px 10px;
+  background: white;
+  box-shadow: 1px 3px 4px grey;
+}
+body #extDataContainer #filterPopup div #filterPopupContent div #closeFilter:hover {
+  color: white;
+  background-color: dodgerblue;
+}
+body #extDataContainer #filteredData {
+  cursor: default;
+  position: relative;
+  top: 55px;
+}
+body #extDataContainer .extData {
+  cursor: default;
+  position: relative;
+  top: 10px;
+}
+body #extDataContainer .extData div {
+  padding: 8px 15px;
+  border-radius: 22px;
+  line-height: 30px;
+  box-shadow: -3px 4px 5px -2px black;
+  color: #f0e8e8;
+  background-color: #3b59f4;
+  font-size: 14px;
+}
+body #extDataContainer .extData div:hover {
+  padding: 8px 15px;
+  background-color: #626c9c;
+  color: white;
+}
+body #extDataContainer .extData div:hover .downArrow {
+  display: inline-block;
+}
+body #extDataContainer .extData div .extIcon {
+  position: relative;
+  background: #f4f4f5;
+  border-radius: 50%;
+  display: inline-block;
+  height: 30px;
+  top: 2px;
+  width: 30px;
+  margin-right: 5px;
+}
+body #extDataContainer .extData div .extIcon img {
+  position: relative;
+  top: 4px;
+  width: 22px;
+  left: 4px;
+  border-radius: 20%;
+}
+body #extDataContainer .extData div .downArrow {
+  display: none;
+  cursor: pointer;
+  position: relative;
+  top: 6px;
+  left: 8px;
+}
+body #extDataContainer .extData div .reload {
+  cursor: pointer;
+  width: 13px;
+  position: relative;
+  top: 4px;
+  left: 10px;
+}
+body #extDataContainer .extData div .rotate {
+  animation: rotation 0.3s linear;
+}
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+body #extDataContainer .extData div .switch {
+  position: relative;
+  float: right;
+  top: 9px;
+  width: 40px;
+  height: 14px;
+}
+body #extDataContainer .extData div .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+body #extDataContainer .extData div .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 34px;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+body #extDataContainer .extData div .slider:before {
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: -3px;
+  bottom: -2px;
+  background-color: darkgray;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+body #extDataContainer .extData div input:checked + .slider {
+  background-color: #2196F3;
+}
+body #extDataContainer .extData div input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+body #extDataContainer .extData div input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  background-color: skyblue;
+}
+body #extDataContainer #more {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  cursor: default;
+}
+body #extDataContainer #more #rightTriangle {
+  position: relative;
+  bottom: 30px;
+  left: 3px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-right: 8px solid #e2dede;
+  border-bottom: 8px solid transparent;
+  border-top: 8px solid transparent;
+}
+body #extDataContainer #more #moreOptions {
+  display: inline-block;
+  background: #e2dede;
+  border-radius: 5%;
+  padding: 5px;
+  width: 120px;
+  text-align: center;
+}
+body #extDataContainer #more #moreOptions p {
+  padding: 2px;
+}
+body #extDataContainer #more #moreOptions p:hover {
+  background-color: #c3c0c0;
+}
+body #extDataContainer #more #moreOptions #errorText {
+  display: none;
+  width: 150px;
+  position: absolute;
+  top: 6px;
+  border: 2px solid #3538b1;
+  right: -134px;
+  background-color: #a1c7ec;
+  padding: 5px;
+  box-shadow: 2px 2px 9px 5px #6f6b92;
+  border-radius: 13px;
+}

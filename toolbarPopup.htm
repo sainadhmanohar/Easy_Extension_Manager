@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="toolStyle.css" type="text/css">
+        <script src="common/jQuery-min.js"></script>
+    </head>
+    <body>
+        <div id="extDataContainer">
+            <div id="head">
+                <img src="icons/home_icon.png" alt="home icon" id="homeIcon"/>
+                <div id="extSearch">
+                    <div>
+                        <input id="inputSearch" type="text" placeholder="search extensions" autofocus/>
+                    </div>
+                    <img src="icons/search_icon1.png" alt="search icon" id="searchIcon">
+                    <img src="icons/clear_icon.png" alt="clear icon" id="clearIcon" style="display: none;">
+                </div>
+                <img src="icons/filter_icon.png" alt="filter icon" id="filterIcon">
+            </div>
+            <div id="filterPopup">
+                <div>
+                    <div id="filterPopupContent">
+                        <label for="filterShowAll">
+                            <p>
+                                <span>Show All</span>
+                                <input type="radio"  name= "extFilter" class= "filter" id="filterShowAll" checked>
+                            </p>
+                        </label>
+                        <label for="filterShowEnabled">
+                            <p>
+                                <span>Enabled&nbsp;</span>
+                                <input type="radio" name= "extFilter" class= "filter" id="filterShowEnabled">
+                            </p>
+                        </label>
+                        <label for="filterShowDisabled">
+                            <p>
+                                <span>Disabled</span>
+                                <input type="radio" name= "extFilter" class= "filter" id="filterShowDisabled">
+                            </p>
+                        </label>
+                        <div>
+                            <!-- <input type="button" id="closeFilter" value="close"> -->
+                            <button id="closeFilter">close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="extData" id="filteredData">
+
+            </div>
+            <p class="headings" style="color:green;text-align: center;">
+                Installed-Dev 
+            </p>
+            <div class="extData" id="extDevItem">
+                
+            </div>
+            <p class="headings"  style="color:green;text-align: center;">
+                Installed - Normal
+            </p>
+            <div class="extData" id="extNormalItem">
+                
+            </div>
+            <p class="headings"  style="text-align: center;color:grey">
+                Uninstalled-Dev
+            </p>
+            <div class="extData" id="extDisabledDevItem">
+                
+            </div>
+            <p class="headings" style="text-align: center;color:grey">
+                Uninstalled-Normal
+            </p>
+            <div class="extData" id="extDisabledNormalItem">
+                
+            </div>
+        </div>
+        <script src="toolPopup.js"></script>
+    </body>
+</html>
