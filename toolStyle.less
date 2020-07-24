@@ -1,0 +1,366 @@
+body{
+    width: 500px;
+    #extDataContainer{
+        padding: 5px;
+        //background-color: #f1e9e9;
+        background-color: #ffffff;
+        box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+        #head{
+            #homeIcon{
+                float: left;
+                position: relative;
+                top: 5px;
+                left: 14px;
+                width: 24px;
+            }
+            img{
+                cursor: pointer;
+                float: right;
+                width: 19px;
+            }
+            #extSearch{
+                border: 1px solid rgba(223, 225, 229, 0);
+                border-radius: 22px;
+                padding: 7px;
+                background-color: #e4e4e4;
+                display: inline-block;
+                // width: 86%;
+                // margin-left: 18px;
+                width: 78%;
+                position: relative;
+                left: 28px;
+                //border-color: rgba(223, 225, 229, 0);
+                &:hover{
+                    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+                }
+                div{
+                    width: 90%;
+                    display: inline-block;
+                    input{
+                        border: none;
+                        margin-left: 7px;
+                        font-size: 15px;
+                        width: 100%;
+                        background: transparent;
+                        //border-bottom: 1px solid black;
+                        &:focus{
+                            outline: none;
+                            //border-bottom: 2px solid black;
+                        }
+                        // &::placeholder{
+                        //     color: #3f3c3c;
+                        // }
+                        &::-webkit-input-placeholder {
+                            color:#3f3c3c;
+                        }
+                        
+                        &::-moz-placeholder {
+                            color:#3f3c3c;
+                        }
+                        
+                        &::-ms-placeholder {
+                            color:#3f3c3c;
+                        }
+                        
+                        &::placeholder {
+                            color:#3f3c3c;
+                        }
+                    }
+                }
+                #searchIcon{
+                    margin-right: 5px;
+                    &:hover{
+                        //width: 20px;
+                        content: url("icons/search_icon_active.png");
+                    }
+                }
+            }
+            #filterIcon{
+                position: relative;
+                top: 9px;
+                right: 9px;
+                &:hover{
+                    height: 19px;
+                    //content: url("filter_icon_active.png");
+                }
+            }
+        }
+        #filterPopup{
+            position: absolute;
+            width: 31%;
+            z-index: 1;
+            right: 13px;
+            margin-left: 3px;
+            display: none;
+            box-shadow: rgba(32, 33, 36, 0.28) -2px 1px 5px 1px;
+            //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            //background-color: #f3f3f3;
+            background-color: #f1f1f1;
+            //background-color: #efefef;
+            //background-color: #e2dede;
+            div{
+                #filterPopupContent{
+                    label {
+                        p {
+                            padding: 2px 14px;
+                            //display: inline-block;
+                            input{
+                                //float: right;
+                                position: relative;
+                                top: 2px;
+                                left: 63px;
+                            }
+                            &:hover{
+                                background-color: #e2dede;
+                            }
+                        }
+                    }
+                    div{
+                        text-align: center;
+                        padding-bottom: 7px;
+                        #closeFilter{
+                            cursor: pointer;
+                            border: 1px solid #bb9c9c;
+                            padding: 3px 10px;
+                            background: white;
+                            box-shadow: 1px 3px 4px grey;
+                            &:hover{
+                                color: white;
+                                background-color: dodgerblue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #filteredData{
+            cursor: default;
+            position: relative;
+            top: 55px;
+        }
+        .extData{
+            cursor: default;
+            position: relative;
+            top: 10px;
+            div{
+                padding: 8px 15px;
+                border-radius:22px;
+                //background-color:goldenrod;
+                line-height: 30px;
+                box-shadow: -3px 4px 5px -2px black;
+                //background-color: #3761d6;
+                color: rgb(240, 232, 232);
+                //background-color: #284bff;
+                background-color: #3b59f4;
+                //background-color: #6d8abf;
+                    //background-color: #7d779e;
+                //box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+                font-size: 14px;
+                &:hover{
+                    //padding: 12px 10px;
+                    padding: 8px 15px;
+                    //background-color: #3b59f4;
+                    background-color: #626c9c;
+                    //background-color: #0073b8;
+                    //background-color: rgb(138,180,248,.08);
+                    color: white;
+                    .downArrow{
+                        display: inline-block;
+                    }
+                }
+                .extIcon{
+                    position: relative;
+                    background: rgb(244, 244, 245);
+                    border-radius: 50%;
+                    display: inline-block;
+                    height: 30px;
+                    top: 2px;
+                    width: 30px;
+                    margin-right: 5px;
+                    img{
+                        position: relative;
+                        top: 4px;
+                        width: 22px;
+                        left: 4px;
+                        border-radius: 20%;
+                    }
+                }
+                
+                .downArrow{
+                    display: none;
+                    cursor: pointer;
+                    position: relative;
+                    top: 6px;
+                    left: 8px;
+                    // &:hover{
+                    //     position: relative;
+                    //     top: 6px;
+                    //     width: 18px;
+                    //     content: url("downArrow3.png");
+                    //     width: 18px;
+                    // }
+                    
+                }
+                .reload{
+                    cursor: pointer;
+                    width: 13px;
+                    position: relative;
+                    top: 4px;
+                    left: 10px;
+                    // -moz-transition: all .4s linear;
+                    // -webkit-transition: all .4s linear;
+                    //transition: all .8s linear;
+                    
+                }
+                .rotate{
+                    animation: rotation 0.3s linear ;
+                }
+                @keyframes rotation{
+                    from {
+                        -webkit-transform: rotate(0deg);
+                        transform: rotate(0deg);
+                    }
+                    to {
+                        -webkit-transform: rotate(359deg);
+                        transform: rotate(359deg);
+                    }
+                }
+                .switch {
+                    position: relative;
+                    float: right;
+                    //display: inline-block;
+                    top: 9px;
+                    width: 40px;
+                    height: 14px;
+                  }
+                  
+                .switch {
+                    input { 
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                    }
+                }
+                  
+                .slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 34px;
+                    background-color: #ccc;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                    &:before {
+                        border-radius: 50%;
+                        position: absolute;
+                        content: "";
+                        height: 18px;
+                        width: 18px;
+                        left: -3px;
+                        bottom: -2px;
+                        background-color: darkgray;
+                        -webkit-transition: .4s;
+                        transition: .4s;
+                    }
+                }
+                // .slider {
+                //     border-radius: 34px;
+                // } 
+                // .slider{
+                //     &:before {
+                //         border-radius: 50%;
+                //     }
+                // }
+                // .slider:before {
+                //     position: absolute;
+                //     content: "";
+                //     height: 18px;
+                //     width: 18px;
+                //     left: -3px;
+                //     bottom: -2px;
+                //     background-color: darkgray;
+                //     -webkit-transition: .4s;
+                //     transition: .4s;
+                // }
+                  
+                input{
+                    &:checked {
+                        + .slider {
+                            background-color: #2196F3;
+                        }
+                    }
+                }
+                  
+                input{
+                    &:focus {
+                        + .slider {
+                            box-shadow: 0 0 1px #2196F3;
+                        }
+                    }
+                }
+                
+                input{
+                    &:checked {
+                        + .slider{
+                            &:before {
+                                -webkit-transform: translateX(26px);
+                                -ms-transform: translateX(26px);
+                                transform: translateX(26px);
+                                background-color: skyblue;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        #more{
+            display: none;
+            position: absolute;
+            z-index: 1;
+            cursor: default;
+            #rightTriangle{
+                position:relative;
+                bottom:30px;
+                left:3px;
+                display:inline-block;
+                width: 0;
+                height: 0;
+                border-right:8px solid #e2dede;
+                border-bottom:8px solid transparent;
+                border-top:8px solid transparent;
+            }
+            #moreOptions{
+                display: inline-block;
+                background: #e2dede;
+                border-radius: 5%;
+                padding: 5px;
+                width: 120px;
+                text-align: center;
+                p{
+                    padding: 2px;
+                    &:hover{
+                        background-color: #c3c0c0;
+                    }
+                }
+               
+                #errorText{
+                    //content: "This is not an APP (Only APPs can be launched)";
+                    display: none;
+                    width: 150px;
+                    position: absolute;
+                    top: 6px;
+                    border: 2px solid #3538b1;
+                    right: -134px;
+                    background-color: #a1c7ec;
+                    padding: 5px;
+                    box-shadow: 2px 2px 9px 5px #6f6b92;
+                    border-radius: 13px;
+                }
+            }
+        }
+    }
+}
