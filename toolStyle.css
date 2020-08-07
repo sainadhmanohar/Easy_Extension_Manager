@@ -80,38 +80,41 @@ body #extDataContainer #head #filterIcon:hover {
   height: 19px;
 }
 body #extDataContainer #filterPopup {
-  position: absolute;
-  width: 31%;
+  position: sticky;
+  width: 32%;
   z-index: 1;
-  right: 13px;
-  margin-left: 3px;
+  top: 50px;
   display: none;
+  float: right;
+}
+body #extDataContainer #filterPopup #filterPopupContent {
+  position: absolute;
   box-shadow: rgba(32, 33, 36, 0.28) -2px 1px 5px 1px;
   background-color: #f1f1f1;
+  width: 100%;
 }
-body #extDataContainer #filterPopup div #filterPopupContent label p {
+body #extDataContainer #filterPopup #filterPopupContent label p {
   padding: 2px 14px;
 }
-body #extDataContainer #filterPopup div #filterPopupContent label p input {
+body #extDataContainer #filterPopup #filterPopupContent label p input {
   position: relative;
   top: 2px;
   left: 63px;
 }
-body #extDataContainer #filterPopup div #filterPopupContent label p:hover {
+body #extDataContainer #filterPopup #filterPopupContent label p:hover {
   background-color: #e2dede;
 }
-body #extDataContainer #filterPopup div #filterPopupContent div {
-  text-align: center;
-  padding-bottom: 7px;
-}
-body #extDataContainer #filterPopup div #filterPopupContent div #closeFilter {
+body #extDataContainer #filterPopup #filterPopupContent #closeFilter {
   cursor: pointer;
+  position: relative;
+  bottom: 7px;
+  left: 56px;
   border: 1px solid #bb9c9c;
   padding: 3px 10px;
   background: white;
   box-shadow: 1px 3px 4px grey;
 }
-body #extDataContainer #filterPopup div #filterPopupContent div #closeFilter:hover {
+body #extDataContainer #filterPopup #filterPopupContent #closeFilter:hover {
   color: white;
   background-color: dodgerblue;
 }

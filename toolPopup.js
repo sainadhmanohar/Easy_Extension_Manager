@@ -25,6 +25,7 @@ var thisExtensionName;
 var extType;
 var prevExt = "";
 var url;
+
 // function to build 
 var markup = function(extensionData,showListSeparate, displayData){
     $(".headings").css("display","block");
@@ -364,7 +365,7 @@ $(document).ready(function(){
 
 
     $(document).click(function(e){
-        if(e.target.offsetParent && e.target.offsetParent.id != "filterPopup"){
+        if(e.target.offsetParent && (e.target.offsetParent.id).substr(0,11) != "filterPopup"){
             $("#filterPopup").css("display","none");
         }
         if(e.target.offsetParent && e.target.offsetParent.id != "more"){
@@ -400,8 +401,9 @@ $(document).ready(function(){
             } */
         }
     });
-    $(".filter").on("change",function(){
+    $(".filter").on("change",function(e){
         //$(".filter").not(this).prop("checked",false); if checkboxes are used instead of radio buttons
+        e.stopPropagation();
         $(".extData").empty();
         showData = extInBrowser;
         filterApplied = "showAll"

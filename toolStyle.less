@@ -92,49 +92,59 @@ body{
             }
         }
         #filterPopup{
-            position: absolute;
-            width: 31%;
+            position: sticky;
+            width: 32%;
             z-index: 1;
-            right: 13px;
-            margin-left: 3px;
+            top: 50px;
             display: none;
-            box-shadow: rgba(32, 33, 36, 0.28) -2px 1px 5px 1px;
-            //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            //background-color: #f3f3f3;
-            background-color: #f1f1f1;
+            float: right;
+
+            // position: absolute;
+            // width: 31%;
+            // z-index: 1;
+            // right: 13px;
+            // margin-left: 3px;
+            // display: none;
+            // box-shadow: rgba(32, 33, 36, 0.28) -2px 1px 5px 1px;
+            // //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            // //background-color: #f3f3f3;
+            // background-color: #f1f1f1;
             //background-color: #efefef;
             //background-color: #e2dede;
-            div{
-                #filterPopupContent{
-                    label {
-                        p {
-                            padding: 2px 14px;
-                            //display: inline-block;
-                            input{
-                                //float: right;
-                                position: relative;
-                                top: 2px;
-                                left: 63px;
-                            }
-                            &:hover{
-                                background-color: #e2dede;
-                            }
+            #filterPopupContent{
+                position: absolute;
+                box-shadow: rgba(32, 33, 36, 0.28) -2px 1px 5px 1px;
+                background-color: #f1f1f1;
+                width: 100%;
+                label {
+                    p {
+                        padding: 2px 14px;
+                        //display: inline-block;
+                        input{
+                            //float: right;
+                            position: relative;
+                            top: 2px;
+                            left: 63px;
+                        }
+                        &:hover{
+                            background-color: #e2dede;
                         }
                     }
-                    div{
-                        text-align: center;
-                        padding-bottom: 7px;
-                        #closeFilter{
-                            cursor: pointer;
-                            border: 1px solid #bb9c9c;
-                            padding: 3px 10px;
-                            background: white;
-                            box-shadow: 1px 3px 4px grey;
-                            &:hover{
-                                color: white;
-                                background-color: dodgerblue;
-                            }
-                        }
+                }
+                    // text-align: center;
+                    // padding-bottom: 7px;
+                #closeFilter{
+                    cursor: pointer;
+                    position: relative;
+                    bottom: 7px;
+                    left: 56px;
+                    border: 1px solid #bb9c9c;
+                    padding: 3px 10px;
+                    background: white;
+                    box-shadow: 1px 3px 4px grey;
+                    &:hover{
+                        color: white;
+                        background-color: dodgerblue;
                     }
                 }
             }
