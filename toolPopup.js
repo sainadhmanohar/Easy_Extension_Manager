@@ -105,10 +105,10 @@ var markup = function(extensionData,showListSeparate, displayData){
             $("div[extId='"+selfExtId+"']").find(".switch").css("display","none");
         }
     });
-    $("#insDevHeading").text("-"+insDevCount);
-    $("#insNormalHeading").text("-"+insNormalCount);
-    $("#uinsDevHeading").text("-"+uinsDevCount);
-    $("#uinsNormalHeading").text("-"+uinsNormalCount);
+    $("#insDevHeading").text(" - "+insDevCount);
+    $("#insNormalHeading").text(" - "+insNormalCount);
+    $("#uinsDevHeading").text(" - "+uinsDevCount);
+    $("#uinsNormalHeading").text(" - "+uinsNormalCount);
 }
 
 // chrome.windows.getCurrent(null,function(windowData){
