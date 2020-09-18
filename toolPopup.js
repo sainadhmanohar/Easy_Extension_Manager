@@ -25,6 +25,7 @@ var thisExtensionName;
 var extType;
 var prevExt = "";
 var url;
+
 // function to build 
 var markup = function(extensionData,showListSeparate, displayData){
     $(".headings").css("display","block");
@@ -35,6 +36,10 @@ var markup = function(extensionData,showListSeparate, displayData){
         $(".headings").eq(0).css("display","none");
         $(".headings").eq(1).css("display","none");
     }
+    var insDevCount = 0;
+    var insNormalCount = 0;
+    var uinsDevCount = 0;
+    var uinsNormalCount = 0;
     $.each(extensionData,function(idx,item){
         if(item.enabled){
             checkboxStatus = "checked";
@@ -42,14 +47,18 @@ var markup = function(extensionData,showListSeparate, displayData){
                 extEnabled.push(item);
             }
             if(item.installType == "development"){
+                insDevCount++;
                 if(extDevEnabled.indexOf(item) == -1){
                     extDevEnabled.push(item);
                 }
+                
                 idName = showListSeparate?"#extDevItem":"#filteredData";
                 // $(idName).append(
                 //     "<div><span>"+item.name+"</span><img src='downArrow3.png' width=18 class='downArrow'><label class='switch'><input style='float:right;' type='checkbox' extId='"+item.id+"' checked><span class='slider'></span></label></div></br>"
                 // );
-            }else if(item.installType == "normal"){
+                //}else if(item.installType == "normal"){
+            }else{
+                insNormalCount++;
                 if(extNormalEnabled.indexOf(item) == -1){
                     extNormalEnabled.push(item);
                 }
@@ -62,6 +71,7 @@ var markup = function(extensionData,showListSeparate, displayData){
                 extDisabled.push(item);
             }
             if(item.installType == "development"){
+                uinsDevCount++;
                 if(extDevDisabled.indexOf(item) == -1){
                     extDevDisabled.push(item);
                 }
@@ -69,7 +79,9 @@ var markup = function(extensionData,showListSeparate, displayData){
                 // $(idName).append(
                 //     "<div><span>"+item.name+"</span><img src='downArrow3.png' width=18 class='downArrow'><label class='switch'><input style='float:right;' type='checkbox' extId='"+item.id+"'"+ checkboxStatus+"><span class='slider'></span></label></div></br>"
                 // );
-            }else if(item.installType == "normal"){
+                //}else if(item.installType == "normal"){
+            }else{
+                uinsNormalCount++;
                 if(extNormalDisabled.indexOf(item) == -1){
                     extNormalDisabled.push(item);
                 }
@@ -83,7 +95,6 @@ var markup = function(extensionData,showListSeparate, displayData){
         }else if(iconURL == ""){
             iconURL = "chrome://extension-icon/"+item.id+"/256/0";
         }
-        
         $(idName).append(
             "<div extId='"+item.id+"' type='"+item.isApp+"'><span class='extIcon'><img src='"+iconURL+"'/></span><span extInstallType ='"+item.installType+"' id='extName'>"+item.name+"</span><img src='icons/downArrow3.png' width=18 class='downArrow'>"+reloadImg+"<label class='switch'><input style='float:right;' type='checkbox'"+ checkboxStatus+"><span class='slider'></span></label><img src='icons/ellipsis_icon.png' class='ellipsisIcon' width=24 style='float:left; margin-top: 4px'></div></br>"
         );
@@ -94,6 +105,10 @@ var markup = function(extensionData,showListSeparate, displayData){
             $("div[extId='"+selfExtId+"']").find(".switch").css("display","none");
         }
     });
+    $("#insDevHeading").text(" - "+insDevCount);
+    $("#insNormalHeading").text(" - "+insNormalCount);
+    $("#uinsDevHeading").text(" - "+uinsDevCount);
+    $("#uinsNormalHeading").text(" - "+uinsNormalCount);
 }
 
 // chrome.windows.getCurrent(null,function(windowData){
@@ -148,11 +163,12 @@ $("#inputSearch").keyup(function(e){
     console.log(e.target.value);
     extSearchData = [];
     $(".extData").empty();
+    var searchFieldText = e.target.value;
     if(e.target.value.trim() != ""){
         $("#searchIcon").hide();
         $("#clearIcon").show();
         $.each(extInBrowser,function(index, item){
-            if(item["name"].toLowerCase().indexOf(e.target.value) > -1){
+            if(item["name"].toLowerCase().indexOf(searchFieldText.toLowerCase()) > -1){
                 console.log("matched");
                 if(extSearchData.indexOf(item) == -1){
                     extSearchData.push(item);
@@ -364,7 +380,7 @@ $(document).ready(function(){
 
 
     $(document).click(function(e){
-        if(e.target.offsetParent && e.target.offsetParent.id != "filterPopup"){
+        if(e.target.offsetParent && (e.target.offsetParent.id).substr(0,11) != "filterPopup"){
             $("#filterPopup").css("display","none");
         }
         if(e.target.offsetParent && e.target.offsetParent.id != "more"){
@@ -400,16 +416,46 @@ $(document).ready(function(){
             } */
         }
     });
-    $(".filter").on("change",function(){
+    $(".filter").on("change",function(e){
         //$(".filter").not(this).prop("checked",false); if checkboxes are used instead of radio buttons
+        e.stopPropagation();
         $(".extData").empty();
-        showData = extInBrowser;
+        var extSearchEnabled = [];
+        var extSearchDisabled = [];
+        var searchField = $("#inputSearch").val().trim();
+        if(extSearchData.length){
+            showData = extSearchData;
+            $.each(extSearchData,function(index, item){
+                if(item.enabled){
+                    if(extSearchEnabled.indexOf(item) == -1){
+                        extSearchEnabled.push(item);
+                    }
+                }else{
+                    if(extSearchDisabled.indexOf(item) == -1){
+                        extSearchDisabled.push(item);
+                    }
+                }
+            });
+        }else{
+            showData = extInBrowser;
+        }
+        //extSearchData
+        
+        
         filterApplied = "showAll"
         if($("#filterShowEnabled").prop("checked")){
-            showData = extEnabled;
+            if(extSearchData.length){
+                showData = extSearchEnabled;
+            }else{
+                showData = extEnabled;
+            }
             filterApplied = "enabled"
         }else if($("#filterShowDisabled").prop("checked")){
-            showData = extDisabled;
+            if(extSearchData.length){
+                showData = extSearchDisabled;
+            }else{
+                showData = extDisabled;
+            }
             filterApplied = "disabled";
         }
         markup(showData, true, filterApplied);
